@@ -41,6 +41,7 @@ export default props => {
           style='default'
           icon='close'
           onClick={props.handleClear}
+          onClick={props.handleClear}
         ></IconButton>
       </Grid>
     </div>

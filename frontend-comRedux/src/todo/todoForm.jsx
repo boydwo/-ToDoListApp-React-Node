@@ -5,6 +5,7 @@ import { bindActionCreators } from "redux";
 import Grid from "../template/grid";
 import IconButton from "../template/iconButton";
 
+import { changeDescription } from "./todoActions";
 const TodoForm = props => {
   const keyHandler = e => {
     if (e.key === "Enter") {
@@ -22,7 +23,8 @@ const TodoForm = props => {
           id='description'
           className='form-control'
           placeholder='Adicione uma tarefa'
-          onChange={props.handleChange}
+          //passando o metodo da action
+          onChange={props.changeDescription}
           onKeyUp={keyHandler}
           value={props.description}
         ></input>
@@ -53,4 +55,7 @@ const TodoForm = props => {
 const mapStateToProps = state => ({
   description: state.todo.description
 });
-export default connect(mapStateToProps)(TodoForm);
+//Dispara açao e manda para os reducers
+const mapDispatchToProps = dispatch =>
+  bindActionCreators({ changeDescription }, dispatch);
+export default connect(mapStateToProps, mapDispatchToProps)(TodoForm);

@@ -23,11 +23,10 @@ export default class Todo extends Component {
   }
   refresh(description = "") {
     const search = description ? `&description__regex=/${description}/` : "";
-    axios
-      .get(`${URL}?sort=-createdAt${search}`)
-      .then(resp =>
-        this.setState({ ...this.state, description, list: resp.data })
-      );
+    axios.get(`${URL}?sort=-createdAt${search}`).then(
+      resp => this.setState({ ...this.state, description, list: resp.data })
+      // resp.data retorna o array de dados
+    );
   }
   handleClear() {
     const description = "";
